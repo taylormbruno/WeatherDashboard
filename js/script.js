@@ -27,15 +27,20 @@ function launchPage() {
     var storedHistory = JSON.parse(localStorage.getItem("cityHistory"));
     cityHistory = storedHistory;
     
-    $(".historySect").empty();
-    for (i=1; i < 6; i++){
-        $(".historySect").append("<button class='btn btn-secondary historyBtn' value='" + cityHistory[cityHistory.length - i] + "'>" + cityHistory[cityHistory.length - i] + "</button><br />");
-        console.log(i);
+    if (storedHistory = null) {
+        fiveDayForecast();
+        currentConditions();
     }
-    $("#cityInput").val(cityHistory[cityHistory.length - 1]);
-    fiveDayForecast();
-    currentConditions();
-    
+    else {
+        $(".historySect").empty();
+        for (i=1; i < 6; i++){
+            $(".historySect").append("<button class='btn btn-secondary historyBtn' value='" + cityHistory[cityHistory.length - i] + "'>" + cityHistory[cityHistory.length - i] + "</button><br />");
+            console.log(i);    
+        }
+        $("#cityInput").val(cityHistory[cityHistory.length - 1]);
+        fiveDayForecast();
+        currentConditions();
+    }
 }
 
 $(".historyBtn").on("click", function(event) { 
