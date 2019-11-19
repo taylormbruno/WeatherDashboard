@@ -1,0 +1,44 @@
+h1 {
+    margin: 0 auto;
+    text-align: center;
+    color:white;
+    background-color: slategray;
+}
+.fiveDayEl {
+    margin: auto;
+}
+
+h5 {
+    font-size: 18px;
+    padding-top: 10px;
+}
+h6 {
+    font-size: 14px;
+}
+img {
+    padding: 0px;
+    height: 50px;
+}
+.col-2 {
+    padding: 0px 10px
+}
+#uvValue {
+    padding: 5px 10px;
+    border-radius: 8%;
+}
+#cityInput {
+    width: 80%;
+
+}
+#searchButton {
+    width: 15%;
+    padding: 0px;
+    line-height: 2;
+}
+.historyBtn {
+    width: 95%;
+}
+.row {
+ width: 95%;
+ margin: 15px auto;
+}
