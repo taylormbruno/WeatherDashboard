@@ -20,32 +20,43 @@ var queryUrl = "https://api.openweathermap.org/data/2.5/";
 var cityHistory = [];
 var storedHistory = JSON.parse(localStorage.getItem("cityHistory"));
 
+// var renderHistCity; 
+
 launchPage();
 function launchPage() {
     var storedHistory = JSON.parse(localStorage.getItem("cityHistory"));
     cityHistory = storedHistory;
     $(".historySect").empty();
     for (i=1; i < 6; i++){
-        $(".historySect").append("<button class='btn btn-secondary historyBtn' data-cityName='" + cityHistory[cityHistory.length - i] + "'>" + cityHistory[cityHistory.length - i] + "</button><br />");
+        $(".historySect").append("<button class='btn btn-secondary historyBtn' value='" + cityHistory[cityHistory.length - i] + "'>" + cityHistory[cityHistory.length - i] + "</button><br />");
         console.log(i);
     }
+    $("#cityInput").val(cityHistory[cityHistory.length - 1]);
+    fiveDayForecast();
+    currentConditions();
 }
 
+$(".historyBtn").on("click", function() { 
+    event.preventDefault();
+    $("#cityInput").val($(this).val());
+    fiveDayForecast();
+    currentConditions();
+});
 
 function citySearch() {
     event.preventDefault();
     var city = $("#cityInput").val();
-    // console.log(city);
     cityHistory.push(city);
     localStorage.setItem("cityHistory", JSON.stringify(cityHistory));
 
-    currentConditions();
-    fiveDayForecast();
     launchPage();
 }
 
 function fiveDayForecast() {
     var city = $("#cityInput").val();
+
+    // console.log(renderHistCity);
+    // city = renderHistCity;
 
     $.ajax({
         url: queryUrl + ("forecast?q=" + city) + impUnit + apiKey1,
@@ -73,6 +84,7 @@ var lat = 0;
 
 function currentConditions() {
     var city = $("#cityInput").val();
+
     $.ajax({
         url: queryUrl + ("weather?q=" + city) + impUnit + apiKey1,
         method: "GET"
