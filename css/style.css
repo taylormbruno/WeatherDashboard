@@ -2,7 +2,7 @@ h1 {
     margin: 0 auto;
     text-align: center;
     color:white;
-    background-color: slategray;
+    background-color: rgb(49, 52, 55);
 }
 .fiveDayEl {
     margin: auto;
@@ -36,7 +36,8 @@ img {
     line-height: 2;
 }
 .historyBtn {
-    width: 95%;
+    width: 100%;
+    margin: 5px 0px;
 }
 .row {
  width: 95%;
