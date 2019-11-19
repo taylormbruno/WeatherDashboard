@@ -1,11 +1,16 @@
+
 h1 {
     margin: 0 auto;
     text-align: center;
     color:white;
     background-color: rgb(49, 52, 55);
+    padding: 10px 0px;
 }
 .fiveDayEl {
     margin: auto;
+    width: 18%;
+    margin-right: 2%;
+    height: 160px;
 }
 
 h5 {
@@ -18,9 +23,6 @@ h6 {
 img {
     padding: 0px;
     height: 50px;
-}
-.col-2 {
-    padding: 0px 10px
 }
 #uvValue {
     padding: 5px 10px;
