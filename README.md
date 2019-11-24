@@ -1,7 +1,7 @@
 # WeatherDashboard
 ##### This weather dashboard will allow the user to search for a city and displays the current weather conditions and a 5 day forecast. 
 
-![Weather Gif](images/weather.gif)
+![Weather Gif](assets/images/weather.gif)
 
 ## Description
 Each city is saved into local storage which will be display as buttons for easy access to the 5 most recently searched cities, all at the click of a button. 
