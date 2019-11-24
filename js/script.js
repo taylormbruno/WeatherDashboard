@@ -16,12 +16,34 @@ var apiKey2 = "&APPID=a0d41cd580f135c5d1113ad410375911";
 var impUnit = "&units=imperial";
 var queryUrl = "https://api.openweathermap.org/data/2.5/";
 
+var city = $("#cityInput").val();
 var cityHistory = [];
+
+var lon = 0;
+var lat = 0;
+
+// function citySearch() {
+$("#searchButton").click(function(){
+    event.preventDefault();
+    
+    var cityHistory = [];
+    var storedHistory = JSON.parse(localStorage.getItem("cityHistory"));
+    var city = $("#cityInput").val();
+    
+    console.log(city);
+    console.log(storedHistory);
+    
+    cityHistory = storedHistory;
+    cityHistory.push(city);
+
+    localStorage.setItem("cityHistory", JSON.stringify(cityHistory));
+    cityForecast();
+    createHistory();
+});
 
 currentLocation();
 function currentLocation() {
-    console.log("currentLocation")
-    // var storedHistory = localStorage.getItem("cityHistory");
+    createHistory();
     navigator.geolocation.getCurrentPosition(function(position) {
         var userLat = position.coords.latitude;
         var userLon = position.coords.longitude;
@@ -64,7 +86,6 @@ function currentLocation() {
                     url: queryUrl + ("uvi?lat=" + userLat + "&lon=" + userLon) + apiKey1,
                     method: "GET"
                 }).then(function(response) {
-                    // console.log(response);
                     $(".currentEl").append("<h4 class='currentLI'>UV Index: <span id='uvValue'>" + response.value + "</span></h4>")
                     var uvRating = document.getElementById("uvValue");
                     if (response.value < 3) {
@@ -88,32 +109,19 @@ function currentLocation() {
     });
 }
 
+
 function createHistory() {
-//  console.log(cityHistory);
-    if (cityHistory == null) {
-        // console.log("no saved data");
-    }
-    else {
-        var storedHistory = JSON.parse(localStorage.getItem("cityHistory"));
-        cityHistory = storedHistory;
+    var storedHistory = JSON.parse(localStorage.getItem("cityHistory"));
+    cityHistory = storedHistory;
+    if (cityHistory !== null) {
         $(".historySect").empty();
-        for (i=1; i < 6; i++){
-            $(".historySect").append("<button class='btn btn-secondary historyBtn' value='" + cityHistory[cityHistory.length - i] + "'>" + cityHistory[cityHistory.length - i] + "</button><br />");
-            // console.log(i); 
+        for (i = 1; i < 6; i++){
+            $(".historySect").append("<button class='btn btn-secondary historyBtn' value='" + cityHistory[cityHistory.length - i] + "'>" + cityHistory[cityHistory.length - i] + "</button><br />"); 
+            if (cityHistory[cityHistory.length - i - 1] == null) {
+                break;
+            }
         }   
-        $("#cityInput").val(cityHistory[cityHistory.length - 1]);
-        cityForecast();
     }
-}
-
-function citySearch() {
-    event.preventDefault();
-    var city = $("#cityInput").val();
-    cityHistory.push(city);
-    localStorage.setItem("cityHistory", JSON.stringify(cityHistory));
-
-    cityForecast();
-    createHistory();
 }
 
 function cityForecast() {
@@ -154,12 +162,11 @@ function cityForecast() {
             // display UV index w/ color
             lon = response.coord.lon;
             lat = response.coord.lat;
+
             $.ajax({
                 url: queryUrl + ("uvi?lat=" + lat + "&lon=" + lon) + apiKey1,
                 method: "GET"
             }).then(function(response) {
-                // console.log(response);
-                // console.log(response.value);
                 $(".currentEl").append("<h4 class='currentLI'>UV Index: <span id='uvValue'>" + response.value + "</span></h4>")
                 var uvRating = document.getElementById("uvValue");
                 if (response.value < 3) {
@@ -182,26 +189,10 @@ function cityForecast() {
     }); 
 }
 
-var lon = 0;
-var lat = 0;
-
-createHistory();
-function createHistory() {
-    if (cityHistory !== null) {
-        var storedHistory = JSON.parse(localStorage.getItem("cityHistory"));
-        cityHistory = storedHistory;
-        $(".historySect").empty();
-        for (i=1; i < cityHistory.length + 1; i++){
-            $(".historySect").append("<button class='btn btn-secondary historyBtn' value='" + cityHistory[cityHistory.length - i] + "'>" + cityHistory[cityHistory.length - i] + "</button><br />");
-            if (cityHistory == null) {
-                break;
-            }
-        } 
-    }
-}
-
 $(document).on("click", ".historyBtn", function(event) { 
     event.preventDefault();
     $("#cityInput").val($(this).val());
     cityForecast();
 });
+
+
