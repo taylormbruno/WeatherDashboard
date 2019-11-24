@@ -1,10 +1,74 @@
 
-h1 {
-    margin: 0 auto;
+.headerEl {
     text-align: center;
     color:white;
     background-color: rgb(49, 52, 55);
-    padding: 10px 0px;
+    padding: 2% 0px;
+    height: 20%;
+}
+
+.container {
+    width:100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+.row {
+    width: 100%;
+    height: 75%;
+}
+
+/* search column */
+.searchCol {
+    background-color: rgb(223, 223, 223);
+    width: 30vw;
+    height: 100vh;
+    padding: 1vh 2vw 0px 3vw;
+    position: fixed;
+    left: 0px;
+}
+#searchTitle {
+    padding-bottom: 5px;
+    padding-top: 5px;
+
+}
+#cityInput {
+    max-width:70%;
+    height: 40px;
+    margin-bottom: 5px;
+}
+#searchButton {
+    border-radius: 5px;
+    color: #007BFF;
+    border-color: #007BFF;
+    background-color: rgb(250, 249, 249);
+    height: 38px;
+    width: 38px;
+    margin-bottom: 5px;
+
+}
+.historyBtn {
+    width: 100%;
+    margin: 5px 0px;
+
+}
+
+/* weather column */
+.infoCol {
+    width: 65vw;
+    height: 75vw;
+    position: fixed;
+    right: 0px;
+    justify-content: center;
+}
+.currentElWrap {
+    min-height: 30vh;
+    width: 95%;
+    margin: 6% 6% 6% 0%;
+}
+.fiveDay {
+    min-height: 30vh;
+    width: 100%;
 }
 .fiveDayEl {
     margin: auto;
@@ -14,37 +78,44 @@ h1 {
     padding: 5px;
 }
 
-h5 {
-    font-size: 18px;
-    padding-top: 10px;
-}
-h6 {
-    font-size: 14px;
-}
+
+/* Icons used in all elements */
 img {
     padding: 0px;
     size: 3em;
 }
+/* UV Value */
 #uvValue {
     padding: 5px 10px;
     border-radius: 8%;
 }
-#cityInput {
-    width: 80%;
 
+/* Dashboard Title */
+h1 {
+    color:white;
 }
-.historyBtn {
-    width: 100%;
-    margin: 5px 0px;
+/* Current Day Location/Date */
+h2 {
+    color:black;
 }
-.row {
- width: 95%;
- margin: 15px auto;
- height: 75%;
+/* 5 day forecast Title */
+h3 {
+    color:black;
 }
-#searchButton {
-    border-radius: 5px;
-    color: #007BFF;
-    border-color: #007BFF;
-    background-color: white;
+/* Current Day Labels */
+h4 {
+    color:black;
+}
+/* Date for 5day Forecast */
+h5 {
+    font-size: 16px;
+    padding-top: 10px;
+}
+/* Labels for 5day Forecast */
+h6 {
+    font-size: 14px;
+}
+
+#searchButton, #cityInput {
+    display: inline-block;
 }

@@ -4,29 +4,33 @@
         <meta charset ="UTF-8">
         <title>Weather Dashboard</title>
         <!-- Link to Font Awesome -->
-        <link rel="stylesheet" href="css/all.css">
+        <link rel="stylesheet" href="fontawesome/css/all.css">
         <!-- Link to Bootstrap -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <!-- link personal css -->
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
-        <div>
+        <div class="headerEl">
             <h1>Weather Dashboard</h1>
         </div>
+        <div class="container">
         <div class="row">
-            <div class="col-3 searchCol">
+            <div class="searchCol">
+            <!-- <div class="col-sm-3 col-md-3 col-lg-3 searchCol"> -->
                 <!-- search form and search history -->
-                <form class="form-inline my-2 my-lg-0">
-                    Search for a city: 
+                <form class="my-2 my-lg-0">
+                    <span id="searchTitle">Search for a city:</span><br>
+
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="cityInput">
-                    <button id="searchButton">
+                    <button id="searchButton" onclick="searchClick()">
                         <i class="fas fa-search-location"></i>
                     </button>
                 </form>
                 <div class="historySect"></div>
             </div>
-            <div class="col-9 infoCol">
+            <div class="infoCol">
+            <!-- <div class="col-sm-9 col-md-9 col-lg-9 infoCol"> -->
                 <div class="card currentElWrap">
                     <div class="card-body currentEl">
                         <!-- dynamically insert data from script -->
@@ -40,9 +44,9 @@
                 </div>
             </div>
         </div>
+    </div>
         <!-- link to Font Awesome -->
-        <script src="js/all.js"></script>
-        <script src="js/solid.js"></script>
+        <script src="fontawesome/js/all.js"></script>
         <!-- link to jQuery -->
         <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
         <!-- Link to Bootstrap -->
