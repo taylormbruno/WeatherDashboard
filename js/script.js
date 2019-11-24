@@ -17,8 +17,8 @@ var impUnit = "&units=imperial";
 var queryUrl = "https://api.openweathermap.org/data/2.5/";
 
 var city = $("#cityInput").val();
-// var cityHistory = [];
-var cityHistory = localStorage.getItem("cityHistory");
+var cityHistory = [];
+// var cityHistory = localStorage.getItem("cityHistory");
 
 var lon = 0;
 var lat = 0;
@@ -52,15 +52,15 @@ function currentLocation() {
             // display date, icon, temp, humidity for 5 day forecast
             $("#fiveDayRow").empty();
     
-            $("#fiveDayRow").append("<div class='card bg-primary text-white fiveDayEl' id='dayOneEl'><h5>" + moment().add(1, "d").format("M/D/YY") + "</h5> <img src='http://openweathermap.org/img/wn/" + response.list[4].weather[0].icon + "@2x.png' title='" + response.list[4].weather[0].description + "'> <h6>Temp: " + response.list[4].main.temp + " °F</h6> <h6>Humidity: " + response.list[4].main.humidity + "</h6></div>");
+            $("#fiveDayRow").append("<div class='card bg-primary text-white fiveDayEl' id='dayOneEl'><h5>" + moment().add(1, "d").format("M/D/YY") + "</h5> <img src='https://openweathermap.org/img/wn/" + response.list[4].weather[0].icon + "@2x.png' title='" + response.list[4].weather[0].description + "'> <h6>Temp: " + response.list[4].main.temp + " °F</h6> <h6>Humidity: " + response.list[4].main.humidity + "%</h6></div>");
     
-            $("#fiveDayRow").append("<div class='card bg-primary text-white fiveDayEl'><h5>" + moment().add(2, "d").format("M/D/YY") + "</h5> <img src='http://openweathermap.org/img/wn/" + response.list[12].weather[0].icon + "@2x.png' title='" + response.list[12].weather[0].description + "'> <h6>Temp: " + response.list[12].main.temp + " °F</h6> <h6>Humidity: " + response.list[12].main.humidity + "</h6></div>");
+            $("#fiveDayRow").append("<div class='card bg-primary text-white fiveDayEl'><h5>" + moment().add(2, "d").format("M/D/YY") + "</h5> <img src='https://openweathermap.org/img/wn/" + response.list[12].weather[0].icon + "@2x.png' title='" + response.list[12].weather[0].description + "'> <h6>Temp: " + response.list[12].main.temp + " °F</h6> <h6>Humidity: " + response.list[12].main.humidity + "%</h6></div>");
     
-            $("#fiveDayRow").append("<div class='card bg-primary text-white fiveDayEl'><h5>" + moment().add(3, "d").format("M/D/YY") + "</h5> <img src='http://openweathermap.org/img/wn/" + response.list[20].weather[0].icon + "@2x.png' title='" + response.list[20].weather[0].description + "'> <h6>Temp: " + response.list[20].main.temp + " °F</h6> <h6>Humidity: " + response.list[20].main.humidity + "</h6></div>");
+            $("#fiveDayRow").append("<div class='card bg-primary text-white fiveDayEl'><h5>" + moment().add(3, "d").format("M/D/YY") + "</h5> <img src='https://openweathermap.org/img/wn/" + response.list[20].weather[0].icon + "@2x.png' title='" + response.list[20].weather[0].description + "'> <h6>Temp: " + response.list[20].main.temp + " °F</h6> <h6>Humidity: " + response.list[20].main.humidity + "%</h6></div>");
             
-            $("#fiveDayRow").append("<div class='card bg-primary text-white fiveDayEl'><h5>" + moment().add(4, "d").format("M/D/YY") + "</h5> <img src='http://openweathermap.org/img/wn/" + response.list[28].weather[0].icon + "@2x.png' title='" + response.list[28].weather[0].description + "'> <h6>Temp: " + response.list[28].main.temp + " °F</h6> <h6>Humidity: " + response.list[28].main.humidity + "</h6></div>");
+            $("#fiveDayRow").append("<div class='card bg-primary text-white fiveDayEl'><h5>" + moment().add(4, "d").format("M/D/YY") + "</h5> <img src='https://openweathermap.org/img/wn/" + response.list[28].weather[0].icon + "@2x.png' title='" + response.list[28].weather[0].description + "'> <h6>Temp: " + response.list[28].main.temp + " °F</h6> <h6>Humidity: " + response.list[28].main.humidity + "%</h6></div>");
     
-            $("#fiveDayRow").append("<div class='card bg-primary text-white fiveDayEl'><h5>" + moment().add(5, "d").format("M/D/YY") + "</h5> <img src='http://openweathermap.org/img/wn/" + response.list[36].weather[0].icon + "@2x.png' title='" + response.list[36].weather[0].description + "'><h6>Temp: " + response.list[36].main.temp + " °F</h6> <h6>Humidity: " + response.list[36].main.humidity + "</h6></div>");
+            $("#fiveDayRow").append("<div class='card bg-primary text-white fiveDayEl'><h5>" + moment().add(5, "d").format("M/D/YY") + "</h5> <img src='https://openweathermap.org/img/wn/" + response.list[36].weather[0].icon + "@2x.png' title='" + response.list[36].weather[0].description + "'><h6>Temp: " + response.list[36].main.temp + " °F</h6> <h6>Humidity: " + response.list[36].main.humidity + "%</h6></div>");
         
             $.ajax({
                 url: queryUrl + ("weather?lat=" + userLat + "&lon=" + userLon) + impUnit + apiKey1,
@@ -68,7 +68,7 @@ function currentLocation() {
             }).then(function(response) {
                 // display city, date, and icon
                 $(".currentEl").empty();
-                $(".currentEl").append("<h2>" + response.name + "  " + moment().format("M/D/YY") + "</h2><img src='http://openweathermap.org/img/wn/" + response.weather[0].icon + "@2x.png' title='" + response.weather[0].description + "'>");
+                $(".currentEl").append("<h2>" + response.name + "  " + moment().format("M/D/YY") + "</h2><img src='https://openweathermap.org/img/wn/" + response.weather[0].icon + "@2x.png' title='" + response.weather[0].description + "'>");
         
                 // display temperature
                 $(".currentEl").append("<h4 class='currentLI'>Temperature: " + response.main.temp + "°F</h4>");
@@ -130,15 +130,15 @@ function cityForecast() {
     }).then(function(response) {
         // display date, icon, temp, humidity
         $("#fiveDayRow").empty();
-        $("#fiveDayRow").append("<div class='card bg-primary text-white fiveDayEl' id='dayOneEl'><h5>" + moment().add(1, "d").format("M/D/YY") + "</h5> <img src='http://openweathermap.org/img/wn/" + response.list[4].weather[0].icon + "@2x.png' title='" + response.list[4].weather[0].description + "'> <h6>Temp: " + response.list[4].main.temp + " °F</h6> <h6>Humidity: " + response.list[4].main.humidity + "</h6></div>");
+        $("#fiveDayRow").append("<div class='card bg-primary text-white fiveDayEl' id='dayOneEl'><h5>" + moment().add(1, "d").format("M/D/YY") + "</h5> <img src='https://openweathermap.org/img/wn/" + response.list[4].weather[0].icon + "@2x.png' title='" + response.list[4].weather[0].description + "'> <h6>Temp: " + response.list[4].main.temp + " °F</h6> <h6>Humidity: " + response.list[4].main.humidity + "%</h6></div>");
 
-        $("#fiveDayRow").append("<div class='card bg-primary text-white fiveDayEl'><h5>" + moment().add(2, "d").format("M/D/YY") + "</h5> <img src='http://openweathermap.org/img/wn/" + response.list[12].weather[0].icon + "@2x.png' title='" + response.list[12].weather[0].description + "'> <h6>Temp: " + response.list[12].main.temp + " °F</h6> <h6>Humidity: " + response.list[12].main.humidity + "</h6></div>");
+        $("#fiveDayRow").append("<div class='card bg-primary text-white fiveDayEl'><h5>" + moment().add(2, "d").format("M/D/YY") + "</h5> <img src='https://openweathermap.org/img/wn/" + response.list[12].weather[0].icon + "@2x.png' title='" + response.list[12].weather[0].description + "'> <h6>Temp: " + response.list[12].main.temp + " °F</h6> <h6>Humidity: " + response.list[12].main.humidity + "%</h6></div>");
 
-        $("#fiveDayRow").append("<div class='card bg-primary text-white fiveDayEl'><h5>" + moment().add(3, "d").format("M/D/YY") + "</h5> <img src='http://openweathermap.org/img/wn/" + response.list[20].weather[0].icon + "@2x.png' title='" + response.list[20].weather[0].description + "'> <h6>Temp: " + response.list[20].main.temp + " °F</h6> <h6>Humidity: " + response.list[20].main.humidity + "</h6></div>");
+        $("#fiveDayRow").append("<div class='card bg-primary text-white fiveDayEl'><h5>" + moment().add(3, "d").format("M/D/YY") + "</h5> <img src='http://openweathermap.org/img/wn/" + response.list[20].weather[0].icon + "@2x.png' title='" + response.list[20].weather[0].description + "'> <h6>Temp: " + response.list[20].main.temp + " °F</h6> <h6>Humidity: " + response.list[20].main.humidity + "%</h6></div>");
         
-        $("#fiveDayRow").append("<div class='card bg-primary text-white fiveDayEl'><h5>" + moment().add(4, "d").format("M/D/YY") + "</h5> <img src='http://openweathermap.org/img/wn/" + response.list[28].weather[0].icon + "@2x.png' title='" + response.list[28].weather[0].description + "'> <h6>Temp: " + response.list[28].main.temp + " °F</h6> <h6>Humidity: " + response.list[28].main.humidity + "</h6></div>");
+        $("#fiveDayRow").append("<div class='card bg-primary text-white fiveDayEl'><h5>" + moment().add(4, "d").format("M/D/YY") + "</h5> <img src='http://openweathermap.org/img/wn/" + response.list[28].weather[0].icon + "@2x.png' title='" + response.list[28].weather[0].description + "'> <h6>Temp: " + response.list[28].main.temp + " °F</h6> <h6>Humidity: " + response.list[28].main.humidity + "%</h6></div>");
 
-        $("#fiveDayRow").append("<div class='card bg-primary text-white fiveDayEl'><h5>" + moment().add(5, "d").format("M/D/YY") + "</h5> <img src='http://openweathermap.org/img/wn/" + response.list[36].weather[0].icon + "@2x.png' title='" + response.list[36].weather[0].description + "'><h6>Temp: " + response.list[36].main.temp + " °F</h6> <h6>Humidity: " + response.list[36].main.humidity + "</h6></div>");
+        $("#fiveDayRow").append("<div class='card bg-primary text-white fiveDayEl'><h5>" + moment().add(5, "d").format("M/D/YY") + "</h5> <img src='https://openweathermap.org/img/wn/" + response.list[36].weather[0].icon + "@2x.png' title='" + response.list[36].weather[0].description + "'><h6>Temp: " + response.list[36].main.temp + " °F</h6> <h6>Humidity: " + response.list[36].main.humidity + "%</h6></div>");
 
         $.ajax({
             url: queryUrl + ("weather?q=" + city) + impUnit + apiKey1,
@@ -146,7 +146,7 @@ function cityForecast() {
         }).then(function(response) {
             // display city name date and icon in h2
             $(".currentEl").empty();
-            $(".currentEl").append("<h2>" + response.name + "  " + moment().format("M/D/YY") + "</h2><img src='http://openweathermap.org/img/wn/" + response.weather[0].icon + "@2x.png' title='" + response.weather[0].description + "'>");
+            $(".currentEl").append("<h2>" + response.name + "  " + moment().format("M/D/YY") + "</h2><img src='https://openweathermap.org/img/wn/" + response.weather[0].icon + "@2x.png' title='" + response.weather[0].description + "'>");
     
             // display temperature
             $(".currentEl").append("<h4 class='currentLI'>Temperature: " + response.main.temp + "°F</h4>");
