@@ -17,25 +17,23 @@ var impUnit = "&units=imperial";
 var queryUrl = "https://api.openweathermap.org/data/2.5/";
 
 var city = $("#cityInput").val();
-var cityHistory = [];
+// var cityHistory = [];
+var cityHistory = localStorage.getItem("cityHistory");
 
 var lon = 0;
 var lat = 0;
 
 // function citySearch() {
+
+// search button click event & logs local storage
 $("#searchButton").click(function(){
     event.preventDefault();
-    
-    var cityHistory = [];
     var storedHistory = JSON.parse(localStorage.getItem("cityHistory"));
-    var city = $("#cityInput").val();
-    
+    city = $("#cityInput").val();
     console.log(city);
     console.log(storedHistory);
-    
     cityHistory = storedHistory;
     cityHistory.push(city);
-
     localStorage.setItem("cityHistory", JSON.stringify(cityHistory));
     cityForecast();
     createHistory();
