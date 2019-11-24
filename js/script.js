@@ -18,7 +18,7 @@ var queryUrl = "https://api.openweathermap.org/data/2.5/";
 
 var city = $("#cityInput").val();
 var cityHistory = [];
-// var cityHistory = localStorage.getItem("cityHistory");
+// cityHistory = localStorage.getItem("cityHistory");
 
 var lon = 0;
 var lat = 0;
@@ -26,12 +26,12 @@ var lat = 0;
 // function citySearch() {
 
 // search button click event & logs local storage
-$("#searchButton").click(function(){
+$(document).on("click", "#searchButton", function(){
     event.preventDefault();
     var storedHistory = JSON.parse(localStorage.getItem("cityHistory"));
     city = $("#cityInput").val();
     console.log(city);
-    console.log(storedHistory);
+    // console.log(storedHistory);
     cityHistory = storedHistory;
     cityHistory.push(city);
     localStorage.setItem("cityHistory", JSON.stringify(cityHistory));
