@@ -3,6 +3,9 @@
 
 ![Weather Gif](assets/images/weather.gif)
 
+[Check out the dashboard here!](https://taylormbruno.github.io/WeatherDashboard)
+
+
 ## Description
 Each city is saved into local storage which will be display as buttons for easy access to the 5 most recently searched cities, all at the click of a button. 
 
